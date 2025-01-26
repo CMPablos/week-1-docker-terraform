@@ -1,0 +1,6 @@
+*.csv
+*.csv.gz
+.ipynb_checkpoints/
+ny_taxi_postgres_data/
+env/
+keys/
