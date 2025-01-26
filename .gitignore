@@ -4,3 +4,6 @@
 ny_taxi_postgres_data/
 env/
 keys/
+terraform/terraform.tfstate*
+terraform/.terraform/*
+.terraform*
