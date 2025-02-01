@@ -49,19 +49,20 @@ def q5ans():
 def q6ans():
     print('Question 6.Largest tip') 
     q = '''
-        SELECT SUM(a.tip_amount) as total_tip_amount, 
+        SELECT MAX(a.tip_amount) as total_tip_amount, 
 	        b."Zone"
         FROM green_taxi_data a
         INNER JOIN zones b
-	        ON b."LocationID" = a."PULocationID"
+	        ON b."LocationID" = a."DOLocationID"
         WHERE EXTRACT(YEAR FROM a.lpep_pickup_datetime) = '2019'
 	        AND EXTRACT(MONTH FROM a.lpep_pickup_datetime) = '10'
+            AND a."PULocationID"=74
         GROUP BY b."Zone"
         ORDER BY total_tip_amount DESC
-        LIMIT 1
+        LIMIT 10
         '''
-    q_values = pd.read_sql(q, con = engine).values[0]
-    answer = q_values[1]
+    q_values = pd.read_sql(q, con = engine).values[:]
+    answer = q_values[:]
     print(f'Answer: {answer}\n')
 
 if __name__=='__main__':
